@@ -115,10 +115,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 label: document.getElementById('apiResponseModalLabel'),
                 desc: document.getElementById('apiResponseModalDesc'),
                 content: document.getElementById('apiResponseContent'),
+                container: document.getElementById('apiResponseContainer'),
                 endpoint: document.getElementById('apiEndpoint'),
                 spinner: document.getElementById('apiResponseLoading'),
                 queryInputContainer: document.getElementById('apiQueryInputContainer'),
-                submitBtn: document.getElementById('submitQueryBtn')
+                submitBtn: document.getElementById('submitQueryBtn'),
+                copyLinkBtn: document.getElementById('copyLinkBtn'),
+                copyResponseBtn: document.getElementById('copyResponseBtn')
             };
 
             modalRefs.label.textContent = apiName;
@@ -126,7 +129,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             modalRefs.content.textContent = '';
             modalRefs.endpoint.textContent = '';
             modalRefs.spinner.classList.add('d-none');
-            modalRefs.content.classList.add('d-none');
+            modalRefs.container.classList.add('d-none');
             modalRefs.endpoint.classList.add('d-none');
 
             modalRefs.queryInputContainer.innerHTML = '';
@@ -191,7 +194,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                     if (!isValid) {
                         modalRefs.content.textContent = 'Please fill in all required fields.';
-                        modalRefs.content.classList.remove('d-none');
+                        modalRefs.container.classList.remove('d-none');
                         return;
                     }
 
@@ -217,7 +220,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         async function handleApiRequest(apiUrl, modalRefs, apiName) {
             modalRefs.spinner.classList.remove('d-none');
-            modalRefs.content.classList.add('d-none');
+            modalRefs.container.classList.add('d-none');
 
             try {
                 const response = await fetch(apiUrl);
@@ -247,11 +250,57 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 modalRefs.endpoint.textContent = apiUrl;
                 modalRefs.endpoint.classList.remove('d-none');
+                modalRefs.container.classList.remove('d-none');
+
+                modalRefs.copyLinkBtn.onclick = () => {
+                    navigator.clipboard.writeText(apiUrl).then(() => {
+                        const originalText = modalRefs.copyLinkBtn.innerHTML;
+                        modalRefs.copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            modalRefs.copyLinkBtn.innerHTML = originalText;
+                        }, 2000);
+                    }).catch(() => {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = apiUrl;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        const originalText = modalRefs.copyLinkBtn.innerHTML;
+                        modalRefs.copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            modalRefs.copyLinkBtn.innerHTML = originalText;
+                        }, 2000);
+                    });
+                };
+
+                modalRefs.copyResponseBtn.onclick = () => {
+                    const textToCopy = modalRefs.content.textContent;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        const originalText = modalRefs.copyResponseBtn.innerHTML;
+                        modalRefs.copyResponseBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            modalRefs.copyResponseBtn.innerHTML = originalText;
+                        }, 2000);
+                    }).catch(() => {
+                        const textArea = document.createElement('textarea');
+                        textArea.value = textToCopy;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        const originalText = modalRefs.copyResponseBtn.innerHTML;
+                        modalRefs.copyResponseBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        setTimeout(() => {
+                            modalRefs.copyResponseBtn.innerHTML = originalText;
+                        }, 2000);
+                    });
+                };
             } catch (error) {
                 modalRefs.content.textContent = `Error: ${error.message}`;
+                modalRefs.container.classList.remove('d-none');
             } finally {
                 modalRefs.spinner.classList.add('d-none');
-                modalRefs.content.classList.remove('d-none');
             }
         }
     } catch (error) {
