@@ -83,6 +83,21 @@
       ]
     },
     {
+      "name": "Meker",
+      "items": [
+        {
+          "name": "Quote Generator",
+          "desc": "Generate quote image with custom text",
+          "path": "/meker/quote?quote="
+        },
+        {
+          "name": "Quote Anime",
+          "desc": "Generate anime style quote image",
+          "path": "/meker/quote/anime?quote="
+        }
+      ]
+    },
+    {
       "name": "Random",
       "items": [
         {
