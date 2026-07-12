@@ -55,6 +55,31 @@
           "name": "TikTok",
           "desc": "TikTok video search",
           "path": "/search/tiktok?q="
+        },
+        {
+          "name": "Pinterest",
+          "desc": "Pinterest image search",
+          "path": "/search/pinterest?q="
+        }
+      ]
+    },
+    {
+      "name": "Download",
+      "items": [
+        {
+          "name": "Facebook",
+          "desc": "Download Facebook video",
+          "path": "/download/facebook?url="
+        },
+        {
+          "name": "Instagram",
+          "desc": "Download Instagram media",
+          "path": "/download/instagram?url="
+        },
+        {
+          "name": "TikTok",
+          "desc": "Download TikTok video",
+          "path": "/download/tiktok?url="
         }
       ]
     },
@@ -69,4 +94,4 @@
       ]
     }
   ]
-}
+        }
