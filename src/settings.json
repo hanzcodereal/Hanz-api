@@ -80,6 +80,26 @@
           "name": "TikTok",
           "desc": "Download TikTok video",
           "path": "/download/tiktok?url="
+        },
+        {
+          "name": "Spotify",
+          "desc": "Download Spotify music",
+          "path": "/download/spotify?url="
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "items": [
+        {
+          "name": "Short URL",
+          "desc": "Shorten long URL using TinyURL",
+          "path": "/tools/shorturl?url="
+        },
+        {
+          "name": "Screenshot Website",
+          "desc": "Capture website screenshot (desktop/mobile)",
+          "path": "/tools/ssweb?url="
         }
       ]
     },
