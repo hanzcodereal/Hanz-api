@@ -86,7 +86,7 @@
       "name": "Meker",
       "items": [
         {
-          "name": "Quote Generator",
+          "name": "Quote",
           "desc": "Generate quote image with custom text",
           "path": "/meker/quote?quote="
         },
@@ -108,4 +108,4 @@
       ]
     }
   ]
-}
+    }
