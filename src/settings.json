@@ -1,6 +1,6 @@
 {
   "name": "Hanz Api's",
-  "version": "1.0.0",
+  "version": "Hanz UI",
   "description": "Simple and Easy-to-Use API Documentation",
   "header": {
     "status": "Online!",
@@ -83,21 +83,6 @@
       ]
     },
     {
-      "name": "Meker",
-      "items": [
-        {
-          "name": "Quote",
-          "desc": "Generate quote image with custom text",
-          "path": "/meker/quote?quote="
-        },
-        {
-          "name": "Quote Anime",
-          "desc": "Generate anime style quote image",
-          "path": "/meker/quote/anime?quote="
-        }
-      ]
-    },
-    {
       "name": "Random",
       "items": [
         {
@@ -108,4 +93,4 @@
       ]
     }
   ]
-    }
+}
