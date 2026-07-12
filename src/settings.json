@@ -44,6 +44,21 @@
       ]
     },
     {
+      "name": "Search",
+      "items": [
+        {
+          "name": "YouTube",
+          "desc": "Video search",
+          "path": "/search/youtube?q="
+        },
+        {
+          "name": "TikTok",
+          "desc": "TikTok video search",
+          "path": "/search/tiktok?q="
+        }
+      ]
+    },
+    {
       "name": "Random",
       "items": [
         {
@@ -52,16 +67,6 @@
           "path": "/random/ba"
         }
       ]
-    },
-    {
-      "name": "Search Tools",
-      "items": [
-        {
-          "name": "YouTube",
-          "desc": "Video search",
-          "path": "/search/youtube?q="
-        }
-      ]
     }
   ]
-        }
+}
