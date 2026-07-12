@@ -39,7 +39,7 @@
           "name": "HydroMind",
           "desc": "Talk with hydromind",
           "path": "/ai/hydromind?text=&model=",
-          "innerDesc": "See the list of supported AI models here: https://mind.hydrooo.web.id"
+          "innerDesc": "See the list of supported AI models here"
         }
       ]
     },
@@ -80,6 +80,11 @@
           "name": "TikTok",
           "desc": "Download TikTok video",
           "path": "/download/tiktok?url="
+        },
+        {
+          "name": "TikTok V2",
+          "desc": "Download TikTok video with metadata",
+          "path": "/download/tiktok/v2?url="
         },
         {
           "name": "Spotify",
