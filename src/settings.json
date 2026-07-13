@@ -73,6 +73,16 @@
       ]
     },
     {
+      "name": "Uploader",
+      "items": [
+        {
+          "name": "Litterbox",
+          "desc": "Upload file to Litterbox (max 200MB)",
+          "path": "/uploader/litterbox"
+        }
+      ]
+    },
+    {
       "name": "Tools",
       "items": [
         {
@@ -86,19 +96,9 @@
       "name": "Canvas",
       "items": [
         {
-          "name": "Quote",
-          "desc": "Generate quote image with custom text",
-          "path": "/canvas/quote?quote="
-        },
-        {
-          "name": "Quote Anime",
-          "desc": "Generate anime style quote image",
-          "path": "/canvas/quote/anime?quote="
-        },
-        {
-          "name": "Fake Afinitas ML",
-          "desc": "Generate fake ML afinitas image",
-          "path": "/canvas/fakeafinitasml?image="
+          "name": "BRAT Generator",
+          "desc": "Generate BRAT style image with text",
+          "path": "/brat?text="
         }
       ]
     },
@@ -113,4 +113,4 @@
       ]
     }
   ]
-        }
+}
