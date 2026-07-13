@@ -1,7 +1,7 @@
 {
   "name": "Hanz Api's",
   "version": "1.0.0",
-  "description": "Simple and Easy-to-Use API Documentation",
+  "description": "Hii, welcome to my api documentation-!!",
   "header": {
     "status": "Online!",
     "imageSrc": [
@@ -52,7 +52,7 @@
       "items": [
         {
           "name": "AIO Downloader",
-          "desc": "All in one downloader (TikTok, Instagram, Facebook, etc)",
+          "desc": "All in one downloader (Support 50+ platforms)",
           "path": "/download/aio?url="
         },
         {
@@ -108,4 +108,4 @@
       ]
     }
   ]
-    }
+        }
