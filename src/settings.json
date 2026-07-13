@@ -51,6 +51,11 @@
       "name": "Download",
       "items": [
         {
+          "name": "AIO Downloader",
+          "desc": "All in one downloader (TikTok, Instagram, Facebook, etc)",
+          "path": "/download/aio?url="
+        },
+        {
           "name": "Facebook",
           "desc": "Download Facebook video",
           "path": "/download/facebook?url="
@@ -103,4 +108,4 @@
       ]
     }
   ]
-}
+    }
