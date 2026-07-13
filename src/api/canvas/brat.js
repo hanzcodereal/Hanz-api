@@ -1,8 +1,8 @@
 const axios = require('axios');
 
 module.exports = (app) => {
-    app.get('/brat', async (req, res) => {
-        const text = req.query.text || req.body.text;
+    app.get('/canvas/brat', async (req, res) => {
+        const text = req.query.text;
 
         if (!text) {
             return res.status(400).json({
@@ -16,10 +16,7 @@ module.exports = (app) => {
             const response = await axios.get(url, {
                 responseType: 'arraybuffer',
                 headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-                    'Referer': 'https://brat.siputzx.my.id/',
-                    'Connection': 'keep-alive'
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
                 }
             });
 
@@ -28,7 +25,7 @@ module.exports = (app) => {
         } catch (error) {
             res.status(500).json({
                 status: false,
-                message: error.message || "Terjadi kesalahan saat membuat BRAT image"
+                message: error.message || "Terjadi kesalahan saat membuat Brat image"
             });
         }
     });
