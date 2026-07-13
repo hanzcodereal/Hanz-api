@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const blob = await response.blob();
                     const fileUrl = URL.createObjectURL(blob);
                     const fileExt = isVideo ? 'mp4' : (isGif ? 'gif' : 'png');
+                    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
                     
                     if (isVideo) {
                         const video = document.createElement('video');
@@ -274,7 +275,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     modalRefs.downloadBtn.onclick = () => {
                         const a = document.createElement('a');
                         a.href = fileUrl;
-                        a.download = `${modalRefs.label.textContent}.${fileExt}`;
+                        a.download = `${modalRefs.label.textContent}_${timestamp}.${fileExt}`;
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
