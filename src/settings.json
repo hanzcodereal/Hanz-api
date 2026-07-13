@@ -73,16 +73,6 @@
       ]
     },
     {
-      "name": "Uploader",
-      "items": [
-        {
-          "name": "Litterbox",
-          "desc": "Upload file to Litterbox (max 200MB)",
-          "path": "/uploader/litterbox"
-        }
-      ]
-    },
-    {
       "name": "Tools",
       "items": [
         {
@@ -98,7 +88,7 @@
         {
           "name": "BRAT Generator",
           "desc": "Generate BRAT style image with text",
-          "path": "/brat?text="
+          "path": "/canvas/brat?text="
         }
       ]
     },
@@ -113,4 +103,4 @@
       ]
     }
   ]
-}
+        }
