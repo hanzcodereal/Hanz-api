@@ -121,7 +121,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 queryInputContainer: document.getElementById('apiQueryInputContainer'),
                 submitBtn: document.getElementById('submitQueryBtn'),
                 copyLinkBtn: document.getElementById('copyLinkBtn'),
-                copyResponseBtn: document.getElementById('copyResponseBtn')
+                copyResponseBtn: document.getElementById('copyResponseBtn'),
+                downloadBtn: document.getElementById('downloadBtn')
             };
 
             modalRefs.label.textContent = apiName;
@@ -133,6 +134,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             modalRefs.endpoint.classList.add('d-none');
             modalRefs.copyLinkBtn.classList.add('d-none');
             modalRefs.copyResponseBtn.classList.add('d-none');
+            modalRefs.downloadBtn.classList.add('d-none');
 
             modalRefs.queryInputContainer.innerHTML = '';
             modalRefs.submitBtn.classList.add('d-none');
@@ -198,6 +200,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         modalRefs.content.textContent = 'Please fill in all required fields.';
                         modalRefs.container.classList.remove('d-none');
                         modalRefs.copyResponseBtn.classList.add('d-none');
+                        modalRefs.downloadBtn.classList.add('d-none');
                         return;
                     }
 
@@ -226,6 +229,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             modalRefs.container.classList.add('d-none');
             modalRefs.copyLinkBtn.classList.add('d-none');
             modalRefs.copyResponseBtn.classList.add('d-none');
+            modalRefs.downloadBtn.classList.add('d-none');
 
             try {
                 const response = await fetch(apiUrl);
@@ -236,25 +240,50 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                 const contentType = response.headers.get('Content-Type');
                 const isImage = contentType && contentType.startsWith('image/');
+                const isVideo = contentType && contentType.startsWith('video/');
+                const isGif = contentType && contentType.startsWith('image/gif');
                 
-                if (isImage) {
+                if (isImage || isVideo || isGif) {
                     const blob = await response.blob();
-                    const imageUrl = URL.createObjectURL(blob);
+                    const fileUrl = URL.createObjectURL(blob);
+                    const fileExt = isVideo ? 'mp4' : (isGif ? 'gif' : 'png');
+                    
+                    if (isVideo) {
+                        const video = document.createElement('video');
+                        video.src = fileUrl;
+                        video.controls = true;
+                        video.style.maxWidth = '100%';
+                        video.style.height = 'auto';
+                        video.style.borderRadius = '5px';
+                        modalRefs.content.innerHTML = '';
+                        modalRefs.content.appendChild(video);
+                    } else {
+                        const img = document.createElement('img');
+                        img.src = fileUrl;
+                        img.alt = modalRefs.label.textContent;
+                        img.style.maxWidth = '100%';
+                        img.style.height = 'auto';
+                        img.style.borderRadius = '5px';
+                        modalRefs.content.innerHTML = '';
+                        modalRefs.content.appendChild(img);
+                    }
 
-                    const img = document.createElement('img');
-                    img.src = imageUrl;
-                    img.alt = modalRefs.label.textContent;
-                    img.style.maxWidth = '100%';
-                    img.style.height = 'auto';
-                    img.style.borderRadius = '5px';
-
-                    modalRefs.content.innerHTML = '';
-                    modalRefs.content.appendChild(img);
                     modalRefs.copyResponseBtn.classList.add('d-none');
+                    modalRefs.downloadBtn.classList.remove('d-none');
+                    
+                    modalRefs.downloadBtn.onclick = () => {
+                        const a = document.createElement('a');
+                        a.href = fileUrl;
+                        a.download = `${modalRefs.label.textContent}.${fileExt}`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                    };
                 } else {
                     const data = await response.json();
                     modalRefs.content.textContent = JSON.stringify(data, null, 2);
                     modalRefs.copyResponseBtn.classList.remove('d-none');
+                    modalRefs.downloadBtn.classList.add('d-none');
                 }
 
                 modalRefs.endpoint.textContent = apiUrl;
@@ -310,6 +339,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 modalRefs.content.textContent = `Error: ${error.message}`;
                 modalRefs.container.classList.remove('d-none');
                 modalRefs.copyResponseBtn.classList.add('d-none');
+                modalRefs.downloadBtn.classList.add('d-none');
             } finally {
                 modalRefs.spinner.classList.add('d-none');
             }
