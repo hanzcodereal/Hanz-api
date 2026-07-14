@@ -1,12 +1,12 @@
 module.exports = function(app) {
     const yts = require('yt-search');
     app.get('/search/youtube', async (req, res) => {
-        const { q } = req.query;
-        if (!q) {
+        const query = req.query.query;
+        if (!query) {
             return res.status(400).json({ status: false, error: 'Query is required' });
         }
         try {
-            const ytResults = await yts.search(q);
+            const ytResults = await yts(query);
             const ytTracks = ytResults.videos.map(video => ({
                 title: video.title,
                 channel: video.author.name,
@@ -22,5 +22,4 @@ module.exports = function(app) {
             res.status(500).json({ status: false, error: error.message });
         }
     });
-      }
-
+}
