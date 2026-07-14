@@ -1,6 +1,6 @@
 {
   "name": "Hanz Api's",
-  "version": "1.0.0",
+  "version": "v1.0.0",
   "description": "Hii, welcome to my api documentation-!!",
   "header": {
     "status": "Online!",
@@ -109,6 +109,11 @@
           "name": "Tokoh Quotes",
           "desc": "Random quotes from famous figures",
           "path": "/random/tokoh-quotes"
+        },
+        {
+          "name": "Anime Quotes",
+          "desc": "Random quotes from anime characters",
+          "path": "/random/anime-quotes"
         }
       ]
     }
