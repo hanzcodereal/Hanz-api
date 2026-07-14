@@ -104,8 +104,13 @@
           "name": "Blue Archive",
           "desc": "Blue Archive Random Images",
           "path": "/random/ba"
+        },
+        {
+          "name": "Tokoh Quotes",
+          "desc": "Random quotes from famous figures",
+          "path": "/random/tokoh-quotes"
         }
       ]
     }
   ]
-}
+        }
