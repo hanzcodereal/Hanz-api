@@ -7,7 +7,7 @@ module.exports = (app) => {
         if (!query) {
             return res.status(400).json({
                 status: false,
-                message: "Parameter 'q' diperlukan."
+                message: "Parameter 'query' diperlukan."
             });
         }
 
