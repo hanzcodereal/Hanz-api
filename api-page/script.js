@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 submitBtn: document.getElementById('submitQueryBtn'),
                 copyLinkBtn: document.getElementById('copyLinkBtn'),
                 copyResponseBtn: document.getElementById('copyResponseBtn'),
-                downloadBtn: document.getElementById('downloadBtn')
+                downloadBtn: document.getElementById('downloadBtn'),
+                endpointContainer: document.querySelector('.endpoint-container')
             };
 
             modalRefs.label.textContent = apiName;
@@ -131,10 +132,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             modalRefs.endpoint.textContent = '';
             modalRefs.spinner.classList.add('d-none');
             modalRefs.container.classList.add('d-none');
-            modalRefs.endpoint.classList.add('d-none');
             modalRefs.copyLinkBtn.classList.add('d-none');
             modalRefs.copyResponseBtn.classList.add('d-none');
             modalRefs.downloadBtn.classList.add('d-none');
+            modalRefs.endpointContainer.style.display = 'none';
 
             modalRefs.queryInputContainer.innerHTML = '';
             modalRefs.submitBtn.classList.add('d-none');
@@ -201,6 +202,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         modalRefs.container.classList.remove('d-none');
                         modalRefs.copyResponseBtn.classList.add('d-none');
                         modalRefs.downloadBtn.classList.add('d-none');
+                        modalRefs.endpointContainer.style.display = 'none';
                         return;
                     }
 
@@ -230,6 +232,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             modalRefs.copyLinkBtn.classList.add('d-none');
             modalRefs.copyResponseBtn.classList.add('d-none');
             modalRefs.downloadBtn.classList.add('d-none');
+            modalRefs.endpointContainer.style.display = 'none';
 
             try {
                 const response = await fetch(apiUrl);
@@ -288,9 +291,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
 
                 modalRefs.endpoint.textContent = apiUrl;
-                modalRefs.endpoint.classList.remove('d-none');
                 modalRefs.container.classList.remove('d-none');
                 modalRefs.copyLinkBtn.classList.remove('d-none');
+                modalRefs.endpointContainer.style.display = 'block';
 
                 modalRefs.copyLinkBtn.onclick = () => {
                     navigator.clipboard.writeText(apiUrl).then(() => {
@@ -341,6 +344,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 modalRefs.container.classList.remove('d-none');
                 modalRefs.copyResponseBtn.classList.add('d-none');
                 modalRefs.downloadBtn.classList.add('d-none');
+                modalRefs.endpointContainer.style.display = 'none';
             } finally {
                 modalRefs.spinner.classList.add('d-none');
             }
@@ -366,3 +370,4 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
 });
+                        
