@@ -5,7 +5,7 @@
   "header": {
     "status": "Online!",
     "imageSrc": [
-      "https://cdn.yupra.my.id/yp/j2y8ou6r.mp4"
+      "https://u.pone.rs/jdlnwnhu.mp4"
     ],
     "imageSize": {
       "mobile": "80%",
@@ -33,17 +33,17 @@
         {
           "name": "YouTube",
           "desc": "Video search",
-          "path": "/search/youtube?q="
+          "path": "/search/youtube?query="
         },
         {
           "name": "TikTok",
           "desc": "TikTok video search",
-          "path": "/search/tiktok?q="
+          "path": "/search/tiktok?query="
         },
         {
           "name": "Pinterest",
           "desc": "Pinterest image search",
-          "path": "/search/pinterest?q="
+          "path": "/search/pinterest?query="
         }
       ]
     },
@@ -108,4 +108,4 @@
       ]
     }
   ]
-        }
+}
