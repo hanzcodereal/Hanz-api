@@ -10,11 +10,12 @@
   "author": "Hanz",
   "license": "MIT",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.52",
     "axios": "^1.6.8",
     "body-parser": "^1.20.3",
+    "chalk": "^4.1.2",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
-    "chalk": "^4.1.2",
     "express": "^4.19.2",
     "qs": "^6.12.3",
     "yt-search": "^2.12.1"
