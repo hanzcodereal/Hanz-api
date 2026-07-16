@@ -82,7 +82,7 @@
       "items": [
         {
           "name": "System Info",
-          "desc": "Generate system information image",
+          "desc": "Generate system information",
           "path": "/info/system-info"
         }
       ]
