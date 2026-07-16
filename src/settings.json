@@ -82,8 +82,13 @@
       "items": [
         {
           "name": "System Info",
-          "desc": "Generate system information",
+          "desc": "Get system information",
           "path": "/info/system-info"
+        },
+        {
+          "name": "Cek Gempa",
+          "desc": "Get latest earthquake information from BMKG",
+          "path": "/info/cek-gempa"
         }
       ]
     },
