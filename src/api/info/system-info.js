@@ -14,6 +14,7 @@ module.exports = (app) => {
       const cpu = {
         model: cpus.length ? cpus[0].model : 'Unknown',
         cores: cpus.length,
+        speed: cpus.length ? cpus[0].speed + ' MHz' : 'Unknown',
         loadavg: os.loadavg()
       };
 
@@ -24,23 +25,29 @@ module.exports = (app) => {
 
       const result = {
         status: true,
-        hostname: os.hostname(),
-        platform: os.platform(),
-        release: os.release(),
-        arch: os.arch(),
-        uptime: `${days}d ${hours}h ${minutes}m`,
+        system: {
+          hostname: os.hostname(),
+          platform: os.platform(),
+          release: os.release(),
+          arch: os.arch(),
+          uptime: `${days}d ${hours}h ${minutes}m`
+        },
         cpu: {
           model: cpu.model,
           cores: cpu.cores,
-          loadavg: cpu.loadavg
+          speed: cpu.speed,
+          loadavg: {
+            one_minute: cpu.loadavg[0].toFixed(2),
+            five_minutes: cpu.loadavg[1].toFixed(2),
+            fifteen_minutes: cpu.loadavg[2].toFixed(2)
+          }
         },
         memory: {
           total: formatBytes(mem.total),
           used: formatBytes(mem.used),
           free: formatBytes(mem.free),
           usedPercent: mem.usedPercent.toFixed(1) + '%'
-        },
-        network: getNetworkInfo()
+        }
       };
 
       res.json(result);
@@ -59,17 +66,4 @@ function formatBytes(bytes) {
   if (gb >= 1) return gb.toFixed(1) + ' GB';
   const mb = bytes / (1024 ** 2);
   return mb.toFixed(0) + ' MB';
-}
-
-function getNetworkInfo() {
-  const ifaces = os.networkInterfaces();
-  const list = [];
-  for (const [name, addrs] of Object.entries(ifaces)) {
-    for (const addr of (addrs || [])) {
-      if (!addr.internal) {
-        list.push({ name, address: addr.address, family: addr.family });
-      }
-    }
-  }
-  return list;
-        }
+            }
