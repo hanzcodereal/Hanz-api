@@ -107,7 +107,7 @@ class WilayahService {
     try {
       const url = this.determineBMKGUrl(wilayahCode);
       const response = await axios.get(url, { timeout: 30000 });
-      return response.data.data;
+      return response.data;
     } catch (error) {
       console.error("Error dalam mengambil data cuaca:", error.message);
       throw new Error("Failed to get weather data from API");
@@ -123,8 +123,15 @@ class WilayahService {
         const weatherData = await this.getWeatherData(topResult.kode);
 
         return {
-          wilayah: topResult,
-          weather: weatherData,
+          wilayah: {
+            kode: topResult.kode,
+            nama: topResult.nama,
+            adm1: topResult.adm1,
+            adm2: topResult.adm2,
+            adm3: topResult.adm3,
+            adm4: topResult.adm4
+          },
+          weather: weatherData
         };
       }
       return null;
