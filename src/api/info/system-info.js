@@ -26,7 +26,6 @@ module.exports = (app) => {
       const result = {
         status: true,
         system: {
-          hostname: os.hostname(),
           platform: os.platform(),
           release: os.release(),
           arch: os.arch(),
@@ -66,4 +65,4 @@ function formatBytes(bytes) {
   if (gb >= 1) return gb.toFixed(1) + ' GB';
   const mb = bytes / (1024 ** 2);
   return mb.toFixed(0) + ' MB';
-            }
+                            }
