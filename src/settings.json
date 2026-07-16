@@ -89,6 +89,11 @@
           "name": "Cek Gempa",
           "desc": "Get latest earthquake information from BMKG",
           "path": "/info/cek-gempa"
+        },
+        {
+          "name": "Cek Cuaca",
+          "desc": "Get weather information by location",
+          "path": "/info/cek-cuaca?query="
         }
       ]
     },
@@ -133,4 +138,4 @@
       ]
     }
   ]
-        }
+    }
