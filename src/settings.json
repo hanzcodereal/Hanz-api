@@ -78,6 +78,16 @@
       ]
     },
     {
+      "name": "Info",
+      "items": [
+        {
+          "name": "System Info",
+          "desc": "Generate system information image",
+          "path": "/info/system-info"
+        }
+      ]
+    },
+    {
       "name": "Tools",
       "items": [
         {
