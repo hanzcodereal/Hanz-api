@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             modalRefs.label.textContent = apiName;
             modalRefs.desc.textContent = apiDesc;
             modalRefs.content.innerHTML = '';
+            modalRefs.content.textContent = '';
             modalRefs.endpoint.textContent = '';
             modalRefs.spinner.classList.add('d-none');
             modalRefs.container.classList.add('d-none');
@@ -252,6 +253,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const fileExt = isVideo ? 'mp4' : (isGif ? 'gif' : 'png');
                     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
                     
+                    modalRefs.content.innerHTML = '';
+                    modalRefs.content.style.whiteSpace = 'normal';
+                    modalRefs.content.style.overflow = 'auto';
+                    modalRefs.content.style.maxHeight = '400px';
+                    
                     if (isVideo) {
                         const video = document.createElement('video');
                         video.src = fileUrl;
@@ -259,7 +265,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         video.style.maxWidth = '100%';
                         video.style.height = 'auto';
                         video.style.borderRadius = '5px';
-                        modalRefs.content.innerHTML = '';
                         modalRefs.content.appendChild(video);
                     } else {
                         const img = document.createElement('img');
@@ -268,7 +273,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         img.style.maxWidth = '100%';
                         img.style.height = 'auto';
                         img.style.borderRadius = '5px';
-                        modalRefs.content.innerHTML = '';
                         modalRefs.content.appendChild(img);
                     }
 
@@ -286,6 +290,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 } else {
                     const data = await response.json();
                     modalRefs.content.textContent = JSON.stringify(data, null, 2);
+                    modalRefs.content.style.whiteSpace = 'nowrap';
+                    modalRefs.content.style.overflow = 'auto';
+                    modalRefs.content.style.maxHeight = '400px';
                     modalRefs.copyResponseBtn.classList.remove('d-none');
                     modalRefs.downloadBtn.classList.add('d-none');
                 }
@@ -341,6 +348,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 };
             } catch (error) {
                 modalRefs.content.textContent = `Error: ${error.message}`;
+                modalRefs.content.style.whiteSpace = 'normal';
+                modalRefs.content.style.overflow = 'auto';
+                modalRefs.content.style.maxHeight = '400px';
                 modalRefs.container.classList.remove('d-none');
                 modalRefs.copyResponseBtn.classList.add('d-none');
                 modalRefs.downloadBtn.classList.add('d-none');
@@ -370,4 +380,3 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
 });
-                        
