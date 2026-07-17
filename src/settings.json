@@ -68,7 +68,7 @@
         {
           "name": "Stream",
           "desc": "Get audio stream URL from YouTube",
-          "path": "/youtube-music/stream"
+          "path": "/youtube-music/stream?url="
         }
       ]
     },
