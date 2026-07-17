@@ -161,11 +161,11 @@ module.exports = (app) => {
             if (!result || !result.audio) {
                 return res.status(503).json({
                     status: false,
-                    message: 'Layanan ekstraksi audio sedang sibuk, coba lagu lain.'
+                    message: 'Layanan ekstraksi audio sedang sibuk, coba lagi nanti.'
                 });
             }
 
-            res.json({
+            return res.json({
                 status: true,
                 result: {
                     duration: result.duration || null,
@@ -175,7 +175,7 @@ module.exports = (app) => {
             });
 
         } catch (error) {
-            res.status(500).json({
+            return res.status(500).json({
                 status: false,
                 message: error.message || "Terjadi kesalahan"
             });
