@@ -48,6 +48,16 @@
       ]
     },
     {
+      "name": "YouTube Music",
+      "items": [
+        {
+          "name": "Search",
+          "desc": "Music search from YouTube Music",
+          "path": "/youtube-music/search?query="
+        }
+      ]
+    },
+    {
       "name": "Download",
       "items": [
         {
@@ -143,4 +153,4 @@
       ]
     }
   ]
-    }
+        }
