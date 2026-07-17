@@ -94,6 +94,11 @@
           "name": "Cek Cuaca",
           "desc": "Get weather information by location",
           "path": "/info/cek-cuaca?query="
+        },
+        {
+          "name": "Info API",
+          "desc": "Get all API information and status",
+          "path": "/info/info-api"
         }
       ]
     },
