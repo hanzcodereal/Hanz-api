@@ -54,6 +54,16 @@
           "name": "Search",
           "desc": "Music search from YouTube Music",
           "path": "/youtube-music/search?query="
+        },
+        {
+          "name": "Artist",
+          "desc": "Get artist details from YouTube Music",
+          "path": "/youtube-music/artist?id="
+        },
+        {
+          "name": "Lyrics",
+          "desc": "Get lyrics from YouTube Music video",
+          "path": "/youtube-music/lyrics?id="
         }
       ]
     },
@@ -153,4 +163,4 @@
       ]
     }
   ]
-        }
+    }
