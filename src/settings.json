@@ -1,4 +1,5 @@
 {
+  {
   "name": "Hanz Api's",
   "version": "v1.0.0",
   "description": "Hii, welcome to my api documentation-!!",
@@ -64,6 +65,11 @@
           "name": "Lyrics",
           "desc": "Get lyrics from YouTube Music video",
           "path": "/youtube-music/lyrics?id="
+        },
+        {
+          "name": "Stream",
+          "desc": "Get audio stream URL from YouTube",
+          "path": "/youtube-music/stream"
         }
       ]
     },
@@ -163,4 +169,4 @@
       ]
     }
   ]
-    }
+        }
