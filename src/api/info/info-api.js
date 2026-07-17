@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = (app) => {
   app.get('/info/info-api', async (req, res) => {
     try {
-      const apiFolder = path.join(__dirname, '../api');
+      const apiFolder = path.join(__dirname, '../../api');
       const categories = {};
       let totalApis = 0;
       let totalWorking = 0;
