@@ -14,7 +14,7 @@ app.set("json spaces", 2);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use('/', express.static(path.join(__dirname, 'api-page')));
+
 app.use('/src', express.static(path.join(__dirname, 'src')));
 
 const settingsPath = path.join(__dirname, './src/settings.json');
@@ -140,11 +140,19 @@ app.get('/stats', (req, res) => {
     res.sendFile(path.join(__dirname, 'api-page', 'stats.html'));
 });
 
-app.use((req, res, next) => {
+app.get('/script.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'api-page', 'script.js'));
+});
+
+app.get('/styles.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'api-page', 'styles.css'));
+});
+
+app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'api-page', '404.html'));
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     console.error(err.stack);
     res.status(500).sendFile(path.join(__dirname, 'api-page', '500.html'));
 });
