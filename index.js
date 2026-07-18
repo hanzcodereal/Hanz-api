@@ -78,10 +78,10 @@ app.get('/config', (req, res) => {
     res.json({
         settings: {
             apiName: settings.name || "Hanz Api's",
-            description: settings.description || "A free and reliable API service",
             favicon: settings.favicon || "",
             version: settings.version || "v1.0.0"
-        }
+        },
+        tags: settings.tags || {}
     });
 });
 
@@ -133,7 +133,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/docs', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-page', 'index.html'));
+    res.sendFile(path.join(__dirname, 'api-page', 'docs.html'));
 });
 
 app.get('/stats', (req, res) => {
@@ -144,8 +144,8 @@ app.get('/script.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'api-page', 'script.js'));
 });
 
-app.get('/styles.css', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-page', 'styles.css'));
+app.get('/style.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'api-page', 'style.css'));
 });
 
 app.use((req, res) => {
