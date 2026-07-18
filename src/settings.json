@@ -1,166 +1,233 @@
 {
   "name": "Hanz Api's",
   "version": "v1.0.0",
-  "description": "Hii, welcome to my api documentation-!!",
-  "header": {
-    "status": "Online!",
-    "imageSrc": [
-      "https://u.pone.rs/jdlnwnhu.mp4"
-    ],
-    "imageSize": {
-      "mobile": "80%",
-      "tablet": "40%",
-      "desktop": "40%"
-    }
-  },
   "apiSettings": {
     "creator": "Hanz"
   },
-  "links": [
-    {
-      "name": "Support Me",
-      "url": "https://saweria.co/hanzreally"
-    },
-    {
-      "name": "Contact Me",
-      "url": "mailto:hanzzcodee@gmail.com"
-    }
-  ],
-  "categories": [
-    {
-      "name": "Search",
-      "items": [
-        {
-          "name": "YouTube",
-          "desc": "Video search",
-          "path": "/search/youtube?query="
-        },
-        {
-          "name": "TikTok",
-          "desc": "TikTok video search",
-          "path": "/search/tiktok?query="
-        },
-        {
-          "name": "Pinterest",
-          "desc": "Pinterest image search",
-          "path": "/search/pinterest?query="
-        }
-      ]
-    },
-    {
-      "name": "YouTube Music",
-      "items": [
-        {
-          "name": "Search",
-          "desc": "Music search from YouTube Music",
-          "path": "/youtube-music/search?query="
-        },
-        {
-          "name": "Artist",
-          "desc": "Get artist details from YouTube Music",
-          "path": "/youtube-music/artist?id="
-        },
-        {
-          "name": "Lyrics",
-          "desc": "Get lyrics from YouTube Music video",
-          "path": "/youtube-music/lyrics?id="
-        },
-        {
-          "name": "Stream",
-          "desc": "Get audio stream URL from YouTube",
-          "path": "/youtube-music/stream?url="
-        }
-      ]
-    },
-    {
-      "name": "Download",
-      "items": [
-        {
-          "name": "AIO Downloader",
-          "desc": "All in one downloader (Support 50+ platforms)",
-          "path": "/download/aio?url="
-        },
-        {
-          "name": "Facebook",
-          "desc": "Download Facebook video",
-          "path": "/download/facebook?url="
-        },
-        {
-          "name": "Instagram",
-          "desc": "Download Instagram media",
-          "path": "/download/instagram?url="
-        },
-        {
-          "name": "TikTok",
-          "desc": "Download TikTok video",
-          "path": "/download/tiktok?url="
-        },
-        {
-          "name": "Spotify",
-          "desc": "Download Spotify music",
-          "path": "/download/spotify?url="
-        }
-      ]
-    },
-    {
-      "name": "Info",
-      "items": [
-        {
-          "name": "Cek Gempa",
-          "desc": "Get latest earthquake information from BMKG",
-          "path": "/info/cek-gempa"
-        },
-        {
-          "name": "Cek Cuaca",
-          "desc": "Get weather information by location",
-          "path": "/info/cek-cuaca?query="
-        },
-        {
-          "name": "Info API",
-          "desc": "Get all API information and status",
-          "path": "/info/info-api"
-        }
-      ]
-    },
-    {
-      "name": "Tools",
-      "items": [
-        {
-          "name": "Short URL",
-          "desc": "Shorten long URL using TinyURL",
-          "path": "/tools/shorturl?url="
-        }
-      ]
-    },
-    {
-      "name": "Canvas",
-      "items": [
-        {
-          "name": "Brat",
-          "desc": "Generate Brat style image with text",
-          "path": "/canvas/brat?text="
-        }
-      ]
-    },
-    {
-      "name": "Random",
-      "items": [
-        {
-          "name": "Blue Archive",
-          "desc": "Blue Archive Random Images",
-          "path": "/random/ba"
-        },
-        {
-          "name": "Tokoh Quotes",
-          "desc": "Random quotes from famous figures",
-          "path": "/random/tokoh-quotes"
-        },
-        {
-          "name": "Anime Quotes",
-          "desc": "Random quotes from anime characters",
-          "path": "/random/anime-quotes"
-        }
-      ]
-    }
-  ]
-        }
+  "tags": {
+    "Search": [
+      {
+        "name": "YouTube Search",
+        "endpoint": "/search/youtube",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Search keyword for YouTube videos"
+          }
+        ]
+      },
+      {
+        "name": "TikTok Search",
+        "endpoint": "/search/tiktok",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Search keyword for TikTok videos"
+          }
+        ]
+      },
+      {
+        "name": "Pinterest Search",
+        "endpoint": "/search/pinterest",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Search keyword for Pinterest images"
+          }
+        ]
+      }
+    ],
+    "YouTube Music": [
+      {
+        "name": "Music Search",
+        "endpoint": "/youtube-music/search",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Search keyword for music"
+          }
+        ]
+      },
+      {
+        "name": "Artist Details",
+        "endpoint": "/youtube-music/artist",
+        "method": "GET",
+        "params": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Artist ID from YouTube Music"
+          }
+        ]
+      },
+      {
+        "name": "Get Lyrics",
+        "endpoint": "/youtube-music/lyrics",
+        "method": "GET",
+        "params": [
+          {
+            "name": "id",
+            "required": true,
+            "description": "Video ID from YouTube Music"
+          }
+        ]
+      },
+      {
+        "name": "Audio Stream",
+        "endpoint": "/youtube-music/stream",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "YouTube video URL"
+          }
+        ]
+      }
+    ],
+    "Download": [
+      {
+        "name": "AIO Downloader",
+        "endpoint": "/download/aio",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "Video URL from supported platforms"
+          }
+        ]
+      },
+      {
+        "name": "Facebook Downloader",
+        "endpoint": "/download/facebook",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "Facebook video URL"
+          }
+        ]
+      },
+      {
+        "name": "Instagram Downloader",
+        "endpoint": "/download/instagram",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "Instagram media URL"
+          }
+        ]
+      },
+      {
+        "name": "TikTok Downloader",
+        "endpoint": "/download/tiktok",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "TikTok video URL"
+          }
+        ]
+      },
+      {
+        "name": "Spotify Downloader",
+        "endpoint": "/download/spotify",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "Spotify track URL"
+          }
+        ]
+      }
+    ],
+    "Info": [
+      {
+        "name": "Earthquake Info",
+        "endpoint": "/info/cek-gempa",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "Weather Info",
+        "endpoint": "/info/cek-cuaca",
+        "method": "GET",
+        "params": [
+          {
+            "name": "query",
+            "required": true,
+            "description": "Location name (city/region)"
+          }
+        ]
+      },
+      {
+        "name": "API Info",
+        "endpoint": "/info/info-api",
+        "method": "GET",
+        "params": []
+      }
+    ],
+    "Tools": [
+      {
+        "name": "Short URL",
+        "endpoint": "/tools/shorturl",
+        "method": "GET",
+        "params": [
+          {
+            "name": "url",
+            "required": true,
+            "description": "Long URL to shorten"
+          }
+        ]
+      }
+    ],
+    "Canvas": [
+      {
+        "name": "Brat Style",
+        "endpoint": "/canvas/brat",
+        "method": "GET",
+        "params": [
+          {
+            "name": "text",
+            "required": true,
+            "description": "Text to generate Brat style image"
+          }
+        ]
+      }
+    ],
+    "Random": [
+      {
+        "name": "Blue Archive",
+        "endpoint": "/random/ba",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "Tokoh Quotes",
+        "endpoint": "/random/tokoh-quotes",
+        "method": "GET",
+        "params": []
+      },
+      {
+        "name": "Anime Quotes",
+        "endpoint": "/random/anime-quotes",
+        "method": "GET",
+        "params": []
+      }
+    ]
+  }
+      }
