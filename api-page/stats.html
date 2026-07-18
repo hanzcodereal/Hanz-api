@@ -129,25 +129,10 @@
             <p class="text-right text-[10px] font-bold text-fmn-dark">FREE: <span id="mem-free">0 GB</span></p>
         </div>
 
-        <div class="bg-term-bg border-2 border-slate-600 shadow-xl rounded-lg overflow-hidden flex flex-col h-[300px] font-mono text-xs relative">
-            <div class="bg-[#2d2d2d] px-3 py-2 flex items-center justify-between border-b border-gray-700 select-none">
-                <div class="flex gap-1.5 items-center">
-                    <div class="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                    <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                    <span class="ml-2 text-gray-400 font-bold">Request Logs</span>
-                </div>
-            </div>
-            <div id="realtime-logs" class="p-4 text-gray-300 overflow-y-auto flex-1 space-y-1 font-mono leading-relaxed">
-                <div class="text-gray-500 italic">Listening for requests...</div>
-            </div>
-        </div>
-
     </main>
 
     <script>
         const updateInterval = 1000;
-        let lastRequestsJson = '';
 
         async function fetchStats() {
             try {
@@ -174,59 +159,12 @@
                     if(s.memory.percent > 90) ramBar.className = 'h-full bg-red-500 meter-bar w-0 flex items-center justify-end pr-2';
                     else if(s.memory.percent > 70) ramBar.className = 'h-full bg-yellow-500 meter-bar w-0 flex items-center justify-end pr-2';
                     else ramBar.className = 'h-full bg-gradient-to-r from-fmn-blue to-fmn-purple meter-bar w-0 flex items-center justify-end pr-2';
-                    
-                    const newRequestsJson = JSON.stringify(data.requests);
-                    if (data.requests && newRequestsJson !== lastRequestsJson) {
-                        lastRequestsJson = newRequestsJson;
-                        renderLogs(data.requests);
-                    }
                 }
             } catch (e) { console.error("Stats fetch error", e); }
-        }
-
-        function renderLogs(logs) {
-            const container = document.getElementById('realtime-logs');
-            container.innerHTML = ''; 
-
-            if (!logs || logs.length === 0) {
-                container.innerHTML = '<div class="text-gray-500 italic">Listening for requests...</div>';
-                return;
-            }
-
-            logs.forEach(log => {
-                const div = document.createElement('div');
-                div.className = "break-all hover:bg-white/5 px-1 rounded transition-colors flex gap-2";
-                
-                const match = log.match(/^\[([A-Z]+)\] \[(\d+)\] (.*)$/);
-                
-                if (match) {
-                    const method = match[1];
-                    const status = match[2];
-                    const url = match[3];
-                    
-                    let methodColor = 'text-blue-400';
-                    if(method === 'POST') methodColor = 'text-green-400';
-                    if(method === 'DELETE') methodColor = 'text-red-400';
-                    
-                    let statusColor = 'text-green-400';
-                    if(status.startsWith('4') || status.startsWith('5')) statusColor = 'text-red-500';
-
-                    div.innerHTML = `
-                        <span class="${methodColor} font-bold w-12 shrink-0">[${method}]</span>
-                        <span class="${statusColor} font-bold w-12 shrink-0">[${status}]</span>
-                        <span class="text-gray-300 truncate">${url}</span>
-                    `;
-                } else {
-                    div.innerText = log;
-                }
-                
-                container.appendChild(div);
-            });
-            container.scrollTop = container.scrollHeight;
         }
 
         fetchStats();
         setInterval(fetchStats, updateInterval);
     </script>
 </body>
-  </html>
+    </html>
