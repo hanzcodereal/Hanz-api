@@ -18,12 +18,7 @@ app.use(cors());
 app.use('/src', express.static(path.join(__dirname, 'src')));
 
 const settingsPath = path.join(__dirname, './src/settings.json');
-let settings = { settings: {}, tags: {} };
-try {
-    settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
-} catch (e) {
-    console.log(chalk.bgHex('#FF4444').hex('#FFF').bold(' Failed to load settings.json, using default '));
-}
+const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
 
 let requestLogs = [];
 const MAX_LOGS = 100;
@@ -44,7 +39,7 @@ app.use((req, res, next) => {
         if (data && typeof data === 'object') {
             const responseData = {
                 status: data.status,
-                creator: settings.settings?.creator || "Hanz",
+                creator: settings.apiSettings.creator || "Hanz",
                 ...data
             };
             return originalJson.call(this, responseData);
@@ -82,13 +77,11 @@ console.log(chalk.bgHex('#90EE90').hex('#333').bold(` Total Routes Loaded: ${tot
 app.get('/config', (req, res) => {
     res.json({
         settings: {
-            apiName: settings.settings?.apiName || "Hanz Api's",
-            favicon: settings.settings?.favicon || "/src/icon.png",
-            version: settings.settings?.version || "v1.0.0",
-            visitors: settings.settings?.visitors || 512,
-            creator: settings.settings?.creator || "Hanz"
-        },
-        tags: settings.tags || {}
+            apiName: settings.name || "Hanz Api's",
+            description: settings.description || "A free and reliable API service",
+            favicon: settings.favicon || "",
+            version: settings.version || "v1.0.0"
+        }
     });
 });
 
@@ -140,7 +133,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/docs', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-page', 'docs.html'));
+    res.sendFile(path.join(__dirname, 'api-page', 'index.html'));
 });
 
 app.get('/stats', (req, res) => {
@@ -151,8 +144,8 @@ app.get('/script.js', (req, res) => {
     res.sendFile(path.join(__dirname, 'api-page', 'script.js'));
 });
 
-app.get('/style.css', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-page', 'style.css'));
+app.get('/styles.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'api-page', 'styles.css'));
 });
 
 app.use((req, res) => {
@@ -161,7 +154,7 @@ app.use((req, res) => {
 
 app.use((err, req, res) => {
     console.error(err.stack);
-    res.status(500).sendFile(path.join(__dirname, 'api-page', '500.html'));
+    res.status(500).sendFile(path.join(__dirname, 'api-page', '404.html'));
 });
 
 app.listen(PORT, () => {
