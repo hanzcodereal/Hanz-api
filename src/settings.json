@@ -1,9 +1,9 @@
 {
-  "name": "Hanz Api's",
-  "version": "v1.0.0",
-  "visitors": 512,
-    "favicon": "/icon.png"
-  "apiSettings": {
+  "settings": {
+    "apiName": "Hanz Api's",
+    "version": "v1.0.0",
+    "visitors": 512,
+    "favicon": "/icon.png",
     "creator": "Hanz"
   },
   "tags": {
@@ -232,4 +232,4 @@
       }
     ]
   }
-      }
+          }
