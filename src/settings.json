@@ -3,7 +3,7 @@
     "apiName": "Hanz Api's",
     "version": "v1.0.0",
     "visitors": 512,
-    "favicon": "/icon.png",
+    "favicon": "/src/icon.png",
     "creator": "Hanz"
   },
   "tags": {
