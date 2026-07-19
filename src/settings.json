@@ -3,7 +3,7 @@
   "version": "v1.0.0",
   "favicon": "/src/icon.png",
   "header": {
-    "status": "Online!",
+    "status": "API PLATFORM",
     "imageSrc": [
       "https://u.pone.rs/jdlnwnhu.mp4"
     ]
@@ -12,16 +12,7 @@
     "creator": "Hanz"
   },
   "visitors": 1247,
-  "links": [
-    {
-      "name": "Support Me",
-      "url": "https://saweria.co/hanzreally"
-    },
-    {
-      "name": "Contact Me",
-      "url": "mailto:hanzzcodee@gmail.com"
-    }
-  ],
+  "links": [],
   "categories": [
     {
       "name": "Search",
@@ -159,4 +150,4 @@
       ]
     }
   ]
-        }
+    }
