@@ -140,14 +140,6 @@ app.get('/stats', (req, res) => {
     res.sendFile(path.join(__dirname, 'api-page', 'stats.html'));
 });
 
-app.get('/script.js', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-page', 'script.js'));
-});
-
-app.get('/styles.css', (req, res) => {
-    res.sendFile(path.join(__dirname, 'api-page', 'styles.css'));
-});
-
 app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'api-page', '404.html'));
 });
